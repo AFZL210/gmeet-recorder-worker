@@ -1,0 +1,22 @@
+{
+  "name": "gmeet-recorder-worker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -p .",
+    "dev": "nodemon ./src/index.ts",
+    "server": "node ./dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "nodemon": "^3.1.9",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "ts-node": "^10.9.2"
+  }
+}
