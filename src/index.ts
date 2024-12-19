@@ -1,6 +1,6 @@
 import puppeteer from "puppeteer";
 
-const meetUrl = 'https://meet.google.com/hys-ipuo-sys'
+const meetUrl = '';
 
 const main = async () => {
   const browser = await puppeteer.launch({ headless: false, args: ['--disable-blink-features=AutomationControlled', '--use-fake-ui-for-media-stream'] });
@@ -12,8 +12,8 @@ const main = async () => {
   
     const buttons = await page.$$('button');
     for (const button of buttons) {
-      const text = await page.evaluate(el => el.textContent?.trim(), button);
-      if (text === 'Ask to join') {
+      const btnText = await page.evaluate(el => el.textContent?.trim(), button);
+      if (btnText === text) {
         await button.click();
         break;
       }
