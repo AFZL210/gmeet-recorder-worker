@@ -1,11 +1,31 @@
 import puppeteer from "puppeteer";
+import { PuppeteerScreenRecorder } from 'puppeteer-screen-recorder';
 
 const meetUrl = '';
+const recorderConfig = {
+  followNewTab: true,
+  fps: 25,
+  ffmpeg_Path: null,
+  videoFrame: {
+    width: 1024,
+    height: 768,
+  },
+  videoCrf: 18,
+  videoCodec: 'libx264',
+  videoPreset: 'ultrafast',
+  videoBitrate: 1000,
+  autopad: {
+    color: 'black',
+  },
+  aspectRatio: '4:3',
+};
+const videoPath = './rec/v1.mp4';
 
 const main = async () => {
   const browser = await puppeteer.launch({ headless: false, args: ['--disable-blink-features=AutomationControlled', '--use-fake-ui-for-media-stream'] });
   const page = await browser.newPage();
   await page.setViewport({width: 1080, height: 1024});
+  const recorder = new PuppeteerScreenRecorder(page, recorderConfig);
 
   const clickOnButtonWithText = async (text: string) => {
     await page.waitForSelector('button');
@@ -32,9 +52,14 @@ const main = async () => {
   await fillInputWithPlaceholder('Your name', 'testuser');
   await clickOnButtonWithText('Ask to join');
 
+  await recorder.start(videoPath);
+
+
 
   await new Promise((re, res) => {
-    setTimeout(res, 50000)
+    setTimeout(res, 10000)
+  }).then(async () => {
+    await recorder.stop();
   })
 }
 
