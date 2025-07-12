@@ -6,8 +6,8 @@ const config: Config = {
     fps: 25,
     ffmpeg_Path: null,
     videoFrame: {
-      width: 1024,
-      height: 768,
+      width: 1920,
+      height: 1080,
     },
     videoCrf: 18,
     videoCodec: "libx264",
@@ -16,11 +16,12 @@ const config: Config = {
     autopad: {
       color: "black",
     },
-    aspectRatio: "4:3",
+    aspectRatio: "16:9",
   },
   puppeteerArgs: [
     "--disable-blink-features=AutomationControlled",
     "--use-fake-ui-for-media-stream",
+    "--window-size=1920,1080"
   ],
   videoPath: "./recordings",
   headlessModeEnabled: false

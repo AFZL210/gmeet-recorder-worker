@@ -5,7 +5,7 @@ import { PuppeteerScreenRecorder } from "puppeteer-screen-recorder";
 import type { Config, BrowserServiceI } from "../types";
 
 class BrowserService implements BrowserServiceI {
-  private static instance: BrowserService; // Singleton instance
+  private static instance: BrowserService;
 
   private browser: Browser | null = null;
   private page: Page | null = null;
@@ -32,7 +32,7 @@ class BrowserService implements BrowserServiceI {
       args: this.config.puppeteerArgs,
     });
     this.page = await this.browser.newPage();
-    await this.page.setViewport({ width: 1080, height: 1024 });
+    await this.page.setViewport({ width: 1920, height: 1080 });
     this.recorder = new PuppeteerScreenRecorder(
       this.page,
       config.recorderConfig
