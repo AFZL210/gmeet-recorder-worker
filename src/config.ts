@@ -18,11 +18,12 @@ const config: Config = {
     },
     aspectRatio: "4:3",
   },
-  puppeteer_args: [
+  puppeteerArgs: [
     "--disable-blink-features=AutomationControlled",
     "--use-fake-ui-for-media-stream",
   ],
-  videoPath: "./rec/v1.mp4",
+  videoPath: "./recordings",
+  headlessModeEnabled: false
 };
 
 export default config;

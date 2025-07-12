@@ -18,12 +18,13 @@ export interface RecorderSettings {
 
 export interface Config {
   recorderConfig: RecorderSettings;
-  puppeteer_args: string[];
+  puppeteerArgs: string[];
   videoPath: string;
+  headlessModeEnabled: boolean
 }
 
-export interface PuppeteerServiceI {
-  init(): Promise<void>;
+export interface BrowserServiceI {
+  init(meetUrl: string): Promise<void>;
   startRecording(): Promise<void>;
   stopRecording(): Promise<string>;
 }
